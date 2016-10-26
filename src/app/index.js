@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { hashHistory } from 'react-router'
 
 import store from './store/store'
-import Root from './Root'
+import Root from './root'
 
 
 ReactDOM.render(

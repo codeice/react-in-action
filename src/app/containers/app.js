@@ -5,9 +5,10 @@ import Nav from '../components/common/nav'
 class App extends Component {
   render() {
     const { children, location } = this.props
+    console.log('children=',children);
     return (
       <div className="page-container">
-        <Nav />
+        <Nav/>
         {children}
       </div>
     )

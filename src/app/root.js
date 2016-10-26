@@ -1,17 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component,PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import routes from './route'
 import { Router } from 'react-router'
+import { hashHistory } from 'react-router'
+import routes from './route'
 
 
 //Provider是由React Redux 提供的高阶组件，用来让你的Redux绑定到React
-export default class Root extends Component {
+class Root extends Component {
 	render() {
-		const { store, history } = this.props
+		const { store } = this.props
 		return (
 			<Provider store={store}>
-				<Router history={history} routes={routes} />
+				<Router history={hashHistory} routes={routes} />
 			</Provider>
 		)
 	}
-}
+};
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+};
+
+export default Root;

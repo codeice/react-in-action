@@ -6,8 +6,8 @@ import {Router,Route,IndexRoute,Redirect,Link,browserHistory} from 'react-router
 import { addTodo, deleteTodo,completeTodo, completeAll} from '../actions/todoAction';
 
 //import all presentaiton component
-import AddTodo from '../components/todo/AddTodo';
-import TodoList from '../components/todo/TodoList';
+import AddTodo from '../components/todo/addTodo';
+import TodoList from '../components/todo/todoList';
 
 
 class Todo extends Component {
