@@ -2,12 +2,16 @@
   "name": "react-in-action",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js"
+    "clean": "rimraf dist/*",
+    "start":"cross-env NODE_ENV=production node server",
+    "dev": "node server --env=dev",
+    "prod": "node server --env=prod",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "antd": "^2.2.0",
     "babel-core": "^6.14.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -31,9 +35,13 @@
     "file-loader": "^0.9.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "minimist": "^1.2.0",
     "open-browser-webpack-plugin": "0.0.2",
     "react-hot-loader": "^3.0.0-beta.5",
     "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.1.1",
+    "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.7",

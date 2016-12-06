@@ -1,5 +1,3 @@
-import '../../assets/less/app.less'
-
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Nav from '../components/common/nav'

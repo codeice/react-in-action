@@ -13,6 +13,7 @@ export default class Nav extends Component {
 					<NavLink to="/About">About</NavLink>
 					<NavLink to="/Inbox">Inbox</NavLink>
 					<NavLink to="/Todo">Todo</NavLink>
+					<NavLink to="/Form">Form</NavLink>
 				</ul>
 			</div>
 		)

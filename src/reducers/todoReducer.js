@@ -27,7 +27,6 @@ export default function todos(state = initialState, action) {
       )
 
     case COMPLETE_TODO:
-    console.log("action id=",action.id);
     var newTodos=[];
     for(var i=0;i<state.length;i++)
     {

@@ -7,6 +7,7 @@ import Dashboard from './containers/dashboard'
 import Todo from './containers/todo'
 import About from './containers/about'
 import Inbox from './containers/inbox'
+import HorizontalForm from './containers/form'
 
 
 export default (
@@ -15,5 +16,6 @@ export default (
   <Route path="/Todo" component={Todo}/>
   <Route path="/About" component={About}/>
   <Route path="/Inbox" component={Inbox}/>
+  <Route path="/Form" component={HorizontalForm}/>
  </Route>
 )
