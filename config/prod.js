@@ -13,9 +13,9 @@ let config = Object.assign({}, baseConfig, {
   devtool: 'sourcemap',
   plugins: [
     new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
+   /* new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"prod"'
-    })
+    }),*/
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),

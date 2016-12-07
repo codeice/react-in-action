@@ -17,7 +17,7 @@ const baseConfig = {
         publicPath: publicPath
     },
     devServer: {
-        contentBase: '../src/',
+        contentBase: './src/',
         historyApiFallback: true,
         hot: true,
         port: dfltPort,
@@ -28,11 +28,6 @@ const baseConfig = {
         extensions: ['', '.js', '.jsx'],
     },
     module: {
-        /*  preLoaders: [{
-              test: /\.(js|jsx)$/,
-              include: srcPath,
-              loader: 'eslint-loader'
-          }],*/
         loaders: [{
             test: /\.(js|jsx)$/,
             loaders: ["babel-loader"],

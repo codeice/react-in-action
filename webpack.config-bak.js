@@ -1,7 +1,7 @@
 'use strict'
 var webpack = require('webpack');
 var path = require('path');
-var transferWebpackPlugin = require('transfer-webpack-plugin'); //var env = process.env.NODE_ENV
+var transferWebpackPlugin = require('transfer-webpack-plugin'); 
 var openBrowserPlugin = require('open-browser-webpack-plugin');
 var env = process.env.NODE_ENV;
 console.log('env=',env);

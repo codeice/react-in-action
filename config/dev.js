@@ -10,7 +10,8 @@ let config = Object.assign({}, baseConfig, {
     entry: [
         'webpack-dev-server/client?http://'+baseConfig.host+':' + baseConfig.port,
         'webpack/hot/only-dev-server',
-        '../src/index'
+        /*'./src/index'*/
+        path.join(__dirname, '../src/index'),
     ],
     cache: true,
     devtool: 'eval-source-map',
@@ -18,9 +19,6 @@ let config = Object.assign({}, baseConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new openBrowserPlugin({
             url: 'http://'+baseConfig.host+':/'+baseConfig.port
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('dev')
         })
     ]
 });
