@@ -1,40 +1,28 @@
 'use strict'
 const path = require('path');
-
-const srcPath = path.join(__dirname, '../src');
-const host='127.0.0.1'
-const dfltPort = 8000;
-const publicPath='../dist';
-
+const setting = require('./setting');
 
 const baseConfig = {
-    port: dfltPort,
+    port: setting.port,
     debug: true,
     devtool: 'eval',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        /* path: path.resolve(__dirname, '../dist'),
+         filename: 'bundle.js',
+         publicPath: setting.publicPath*/
+        path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js',
-        publicPath: publicPath
+        publicPath: setting.publicPath
     },
-    devServer: {
-        contentBase: './src/',
-        historyApiFallback: true,
-        hot: true,
-        port: dfltPort,
-        publicPath: publicPath,
-        noInfo: false
-    },
+
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['', '.js', '.jsx', '.json', '.less', '.css', '.png', '.jpg']
     },
     module: {
         loaders: [{
             test: /\.(js|jsx)$/,
             loaders: ["babel-loader"],
-            exclude: /(node_modules|bower_components)/,
-            include: [
-                path.resolve(__dirname, "src")
-            ]
+            exclude: /(node_modules|bower_components)/
         }, {
             test: /\.css$/,
             loader: "style!css?modules"
@@ -49,11 +37,4 @@ const baseConfig = {
     }
 };
 
-
-module.exports = {
-    srcPath: srcPath,
-    host:host,
-    port: dfltPort,
-    publicPath:publicPath,
-    baseConfig: baseConfig
-};
+module.exports = baseConfig;

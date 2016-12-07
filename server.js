@@ -1,27 +1,38 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config.js');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 
-/*new WebpackDevServer(webpack(config), {
-        publicPath: config.output.publicPath,
+var config = require('./webpack.config.js');
+var setting = require('./config/setting.js');
+
+const compiler = webpack(config);
+new WebpackDevServer(compiler, {
+        historyApiFallback: true,
         hot: true,
-        noInfo: false,
-        historyApiFallback: true
+        port: setting.port,
+        publicPath: config.output.publicPath,
+        noInfo: false
     })
-    .listen(3000, '127.0.0.1', function(err, result) {
+    .listen(setting.port, setting.host, (err) => {
         if (err) {
             console.log(err);
         }
+        console.log('Listening at localhost:' + config.port);
     });
-*/
 
-const compiler = webpack(config);
 
-console.log('config.host=',config.host,'and config.port= ',config.port);
-new WebpackDevServer(compiler, config.devServer)
-.listen(config.port, config.host, (err) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log('Listening at localhost:' + config.port);
+
+/*const compiler = webpack(config);
+// attach to the compiler & the server
+webpackDevMiddleware(compiler, {
+    noInfo: true,
+    hot: true,
+    port: setting.port,
+    publicPath: config.output.publicPath,
+    stats: {
+        colors: true
+    }
 });
+
+webpackHotMiddleware(compiler);*/
