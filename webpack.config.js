@@ -1,31 +1,15 @@
 'use strict';
 
 const path = require('path');
-const args = require('minimist')(process.argv.slice(2));
 
-// List of allowed environments
-const allowedEnvs = ['dev', 'prod'];
-
-// Set the correct environment
-let env;
-if (args.env) {
-  env = args.env;
-} else {
-  env = 'dev';
-}
-process.env.REACT_WEBPACK_ENV = env;
-
-/**
- * Build the webpack configuration
- * @param  {String} wantedEnv The wanted environment
- * @return {Object} Webpack config
- */
 function buildConfig(env) {
-  let isValid = env && env.length > 0 && allowedEnvs.indexOf(env) !== -1;
-  let validEnv = isValid ? env : 'dev';
-  console.log('validEnv=',validEnv)
-  let config = require(path.join(__dirname, 'config/' + validEnv));
-  return config;
+    let config = {};
+    if (process.env.NODE_ENV === 'prod') {
+        config = require(path.join(__dirname, 'config/prod'));
+    } else {
+        config = require(path.join(__dirname, 'config/dev'));
+    }
+    return config;
 }
 
 module.exports = buildConfig(env);
