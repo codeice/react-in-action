@@ -4,7 +4,6 @@ import { Router,hashHistory } from 'react-router'
 import routes from './route'
 import DevTools from './containers/devTools';
 
-
 //Provider是由React Redux 提供的高阶组件，用来让你的Redux绑定到React
 class Root extends Component {
 	render() {

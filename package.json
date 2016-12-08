@@ -2,15 +2,17 @@
   "name": "react-in-action",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "author": "codeice<lyb.jessie@hotmail.com>",
+  "private": true,
   "scripts": {
     "clean": "rimraf dist/*",
-    "build": "cross-env NODE_ENV=production  node ./server.js",
-    "dev": "cross-env NODE_ENV=development node ./server.js"
+    "build": "cross-env NODE_ENV=production  node build/build-server.js",
+    "dev": "cross-env NODE_ENV=development node build/dev-server.js"
   },
   "dependencies": {
     "antd": "^2.2.0",
     "babel-core": "^6.14.0",
+    "ora": "^0.3.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -27,28 +29,28 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
+    "compression-webpack-plugin": "^0.3.2",
     "cross-env": "^3.1.3",
     "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-react": "^6.3.0",
+    "express": "^4.14.0",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "open-browser-webpack-plugin": "0.0.2",
     "react-hot-loader": "^3.0.0-beta.5",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.1.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
-    "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
+    "open-browser-webpack-plugin": "0.0.2",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-dev-server": "^1.16.1",
-    "webpack-hot-middleware": "^2.13.2"
-  },
-  "author": "Jessie",
-  "license": "ISC"
+    "webpack-hot-middleware": "^2.13.2",
+    "webpack-merge": "^1.0.2"
+  }
 }

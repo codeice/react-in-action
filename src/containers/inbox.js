@@ -6,7 +6,7 @@ class Inbox extends Component{
   render() {
     return (
       <div className="content-container">
-        <h2>Welcome to your Inbox!</h2>
+        <h2>Welcome to your Inbox! no emails</h2>
       </div>
     )
   }
