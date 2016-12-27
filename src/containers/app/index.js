@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Nav from '../components/common/nav'
+import Nav from '../../components/common/nav'
 
 class App extends Component {
   render() {

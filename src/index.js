@@ -5,6 +5,7 @@ import configureStore from './store/configureStore'
 import Root from './root'
 
 const store = configureStore();
+
 ReactDOM.render(
  <Root store={store} history={hashHistory} />,
 	document.getElementById('root-container')

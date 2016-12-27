@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import todos from './todoReducer';
+import todo from './todo';
+import demo from './demo';
 
 const rootReducer=combineReducers({
-	todos
+	todo,
+	demo
 });
 
 

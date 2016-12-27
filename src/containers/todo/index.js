@@ -3,17 +3,16 @@ import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {Router,Route,IndexRoute,Redirect,Link,browserHistory} from 'react-router'
-import { addTodo, deleteTodo,completeTodo, completeAll} from '../actions/todoAction';
 
-//import all presentaiton component
-import AddTodo from '../components/todo/addTodo';
-import TodoList from '../components/todo/todoList';
+import { addTodo, deleteTodo,completeTodo, completeAll} from '../../actions/todo';
+import AddTodo from '../../components/todo/addTodo';
+import TodoList from '../../components/todo/todoList';
 
 
 class Todo extends Component {
   render() {
     // Injected by connect() call:
-    const { dispatch, visibleTodos} = this.props
+    const { dispatch, todo} = this.props
     return (
       <div className="content-container">
         <AddTodo
@@ -22,7 +21,7 @@ class Todo extends Component {
             }
           }/>
         <TodoList
-          todos={visibleTodos}
+          todos={todo}
           onTodoClick={id =>
             dispatch(completeTodo(id))
           }/>
@@ -33,18 +32,19 @@ class Todo extends Component {
 
 
 Todo.propTypes = {
-  visibleTodos: PropTypes.arrayOf(PropTypes.shape({
+  todo: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }).isRequired).isRequired,
 }
 
 
-function select(state) {
+const mapStateToProps = (state) => {
+  const {todo} = state;
   return {
-    visibleTodos: state.todos
+      todo: todo ? todo : null,
   };
-}
+};
 
 
-export default connect(select)(Todo);
+export default connect(mapStateToProps)(Todo);

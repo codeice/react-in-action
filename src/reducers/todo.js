@@ -1,4 +1,5 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } 
+from '../constants/ActionTypes'
 
 const initialState = [
   {
@@ -9,7 +10,7 @@ const initialState = [
 ]
 
 //reducer 是纯函数。它仅仅用于计算下一个 state，接收state 和action 的参数
-export default function todos(state = initialState, action) {
+export default function todo(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
       return [

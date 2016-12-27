@@ -1,6 +1,5 @@
 import * as types from '../constants/ActionTypes.js'
 
-
 /*
  *action 创建函数
  */

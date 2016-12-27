@@ -1,11 +1,16 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { persistState } from 'redux-devtools';
+import {createStore, applyMiddleware, compose } from 'redux';
+import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise';
+import {persistState } from 'redux-devtools';
+
 import devTools from '../containers/devTools';
 import rootReducer from '../reducers';
 
+const logger = createLogger();
 var enhancer = compose(
     // Middleware you want to use in development:
-    applyMiddleware(),
+    applyMiddleware(thunk,promiseMiddleware,logger),
     // Required! Enable Redux DevTools with the monitors you chose
     devTools.instrument()
 );
