@@ -1,4 +1,4 @@
-import * as types from '../constants/ActionTypes.js'
+import * as types from '../constants/actionTypes'
 
 /*
  *action 创建函数

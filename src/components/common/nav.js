@@ -12,6 +12,7 @@ export default class Nav extends Component {
 					<NavLink to="/" default={true}>Dashboard</NavLink>
 					<NavLink to="/Todo">Todo</NavLink>
 					<NavLink to="/Demo">Demo</NavLink>
+					<NavLink to="/Counter">Counter</NavLink>
 				</ul>
 			</div>
 		)

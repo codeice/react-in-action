@@ -7,16 +7,8 @@ import Login from './containers/login'
 import Dashboard from './containers/dashboard'
 import Todo from './containers/todo'
 import Demo from './containers/demo'
+import Counter from './containers/counter'
 
-
-
-/*export default (
- <Route path="/" component={App}>
-  <IndexRoute component={Dashboard}/>
-  <Route path="/Todo" component={Todo}/>
-  <Route path="/Demo" component={Demo}/>
- </Route>
-)*/
 
 export default (
  <Route path="/">
@@ -24,6 +16,7 @@ export default (
  	  <IndexRoute component={Dashboard}/>
 	  <Route path="/Todo" component={Todo}/>
 	  <Route path="/Demo" component={Demo}/>
+	  <Route path="/Counter" component={Counter}/>
   </Route>
   	  <Route path="/Login" component={Login}/>
  </Route>

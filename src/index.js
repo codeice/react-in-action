@@ -8,5 +8,5 @@ const store = configureStore();
 
 ReactDOM.render(
  <Root store={store} history={hashHistory} />,
-	document.getElementById('root-container')
+	document.getElementById('app')
 )
