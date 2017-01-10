@@ -13,6 +13,7 @@ export default class Nav extends Component {
 					<NavLink to="/Todo">Todo</NavLink>
 					<NavLink to="/Demo">Demo</NavLink>
 					<NavLink to="/Counter">Counter</NavLink>
+					<NavLink to="/TableList">表格</NavLink>
 				</ul>
 			</div>
 		)

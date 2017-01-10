@@ -13,13 +13,16 @@ function getUserError(user) {
     return { type: types.Error, user }
 }
 
-export function getUser(dispatch) {
-    dispatch(fetch())
-     api.get('mockjs/9768/Users', { id: 2 }).then(function(response) {
-        console.log('get data=', response.data);
-        dispatch(getUserSuccess(response.data));
-    }, function(response) {
-        console.log('taobao get error=', response.data);
-        dispatch(getUserError(response.data));
-    });
+export function getUser() {
+    return function(dispatch, getState) {
+        dispatch(fetch())
+        api.get('mockjs/9768/Users', { id: 2 }).then(function(response) {
+            console.log('user info=', response.data);
+            dispatch(getUserSuccess(response.data));
+        }, function(response) {
+            console.log('get user info error=', response.data);
+            dispatch(getUserError(response.data));
+        });
+    }
 }
+

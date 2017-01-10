@@ -8,6 +8,7 @@ import Dashboard from './containers/dashboard'
 import Todo from './containers/todo'
 import Demo from './containers/demo'
 import Counter from './containers/counter'
+import TableList from './containers/table'
 
 
 export default (
@@ -17,6 +18,7 @@ export default (
 	  <Route path="/Todo" component={Todo}/>
 	  <Route path="/Demo" component={Demo}/>
 	  <Route path="/Counter" component={Counter}/>
+	  <Route path="/TableList" component={TableList}/>
   </Route>
   	  <Route path="/Login" component={Login}/>
  </Route>
