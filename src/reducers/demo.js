@@ -1,23 +1,28 @@
-import { SUCCESS, ERROR, FETCHING } from '../constants/demoTypes'
+import * as types from '../constants/demoTypes'
 
-const initialState = [{
-    id: 0,
-    name: 'test user'
-}]
+const initialState = {
+    users: [{
+        id: 1,
+        name: 'default user'
+    }]
+}
 
 export default function demo(state = initialState, action) {
+
     switch (action.type) {
-        case SUCCESS:
+        //redux 
+        case types.GET_USER:
             return [
-            	action.user,
-                ...state
+                ...state,
+                action.user
             ]
-        case ERROR:
-        	console.log('fetch user error!');
-        	return state;
-        case FETCHING:
-        	console.log('fetch user start');
-        	return state;
+        //reducer
+        case types.ADD_USER:
+            if(action.payload.ok==true){
+            return [...state, JSON.parse(action.payload.data.data)];
+            }else{
+                return state;
+            }
         default:
             return state;
     }

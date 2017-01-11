@@ -1,3 +1,2 @@
-export const FETCHING = 'FETCHING'
-export const SUCCESS = 'SUCCESS'
-export const ERROR = 'ERROR'
+export const GET_USER='GET_USER'
+export const ADD_USER='ADD_USER'

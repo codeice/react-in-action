@@ -23,8 +23,8 @@ class TableList extends Component{
                <td>{row.job}</td>
                <td>{row.address}</td>
                <td>
-                   <button type="Button" onClick={()=>onEdit(row.key)} >编辑</button>
-                   <button type="button" onClick={()=>onDelete(row.key)}>删除</button>
+                   <button  onClick={()=>onEdit(row.key)} >编辑</button>
+                   <button  onClick={()=>onDelete(row.key)}>删除</button>
                </td>
            </tr>
        )
@@ -77,6 +77,7 @@ class TableList extends Component{
            dataIndex: 'operate',
            key: 'operate',
        }];
+
         return (
             <div>
                 <Table dataSource={dataSource} columns={columns} renderRow={this._renderRow}/>

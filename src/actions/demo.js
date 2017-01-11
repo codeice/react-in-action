@@ -1,28 +1,29 @@
 import * as types from '../constants/demoTypes'
 import api from '../api'
 
-function fetch() {
-    return { type: types.FETCHING }
-}
 
-function getUserSuccess(user) {
-    return { type: types.SUCCESS, user }
-}
-
-function getUserError(user) {
-    return { type: types.Error, user }
-}
-
-export function getUser() {
-    return function(dispatch, getState) {
-        dispatch(fetch())
-        api.get('mockjs/9768/Users', { id: 2 }).then(function(response) {
+//redux-thunk
+export function getUserAsync(id) {
+    return dispatch=>{
+         api.get('mockjs/9768/Users', { id: id }).then(function(response) {
             console.log('user info=', response.data);
-            dispatch(getUserSuccess(response.data));
+            var user=response.data;
+            dispatch({
+                type:types.GET_USER,
+                user
+            });
         }, function(response) {
             console.log('get user info error=', response.data);
-            dispatch(getUserError(response.data));
         });
+    }
+}
+
+
+//redux-promise
+export function addUserAsync(user) {
+    return {
+        type:types.ADD_USER,
+        payload:api.post('mockjs/9768/Users', user)
     }
 }
 
