@@ -1,23 +1,23 @@
-var path=require('path');
+var path = require('path');
 var webpack = require('webpack');
-var express=require('express');
+var express = require('express');
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.config.js');
 var config = require('../config')
 
 var proxyTable = config.dev.proxyTable
-// default port where dev server listens for incoming traffic
+    // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
-var app=express();
+var app = express();
 
 const compiler = webpack(webpackConfig);
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true,
-    chunks: false
-  }
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+        colors: true,
+        chunks: false
+    }
 });
 // serve webpack bundle output
 app.use(devMiddleware)
@@ -25,29 +25,43 @@ app.use(devMiddleware)
 // enable hot-reload and state-preserving
 app.use(require('webpack-hot-middleware')(compiler))
 
+
+/*//app mock
+app.get('api/users', function(req, res) {
+    res.send({
+        users: [{
+            id: 1,
+            name: 'jessie'
+        }, {
+            id: 2,
+            name: 'tina'
+        }]
+    });
+});*/
+
 // force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function (compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
-    cb()
-  })
+compiler.plugin('compilation', function(compilation) {
+    compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
+        hotMiddleware.publish({ action: 'reload' })
+        cb()
+    })
 });
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  options.pathRewrite = function (path, req) {
-    if (path.indexOf('/api') > -1) {
-      path = path.replace('/api', '')
+Object.keys(proxyTable).forEach(function(context) {
+    var options = proxyTable[context]
+    if (typeof options === 'string') {
+        options = { target: options }
     }
-    console.log(path)
-    return path
-  }
-  console.log('context=',context,'options=',options);
-  app.use(proxyMiddleware(context, options))
+    options.pathRewrite = function(path, req) {
+        if (path.indexOf('/api') > -1) {
+            path = path.replace('/api', '')
+        }
+        console.log(path)
+        return path
+    }
+    console.log('context=', context, 'options=', options);
+    app.use(proxyMiddleware(context, options))
 })
 
 
@@ -55,10 +69,10 @@ Object.keys(proxyTable).forEach(function (context) {
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-module.exports = app.listen(port, function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
-  console.log('Listening at http://localhost:' + port + '\n')
+module.exports = app.listen(port, function(err) {
+    if (err) {
+        console.log(err)
+        return
+    }
+    console.log('Listening at http://localhost:' + port + '\n')
 })
