@@ -5,6 +5,13 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.config.js');
 var config = require('../config')
 
+const menus=require('../fake/menus.js')
+const users=require('../fake/users.js')
+
+
+console.log('menus=',menus);
+console.log('users=',users);
+
 var proxyTable = config.dev.proxyTable
     // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -24,20 +31,6 @@ app.use(devMiddleware)
 
 // enable hot-reload and state-preserving
 app.use(require('webpack-hot-middleware')(compiler))
-
-
-/*//app mock
-app.get('api/users', function(req, res) {
-    res.send({
-        users: [{
-            id: 1,
-            name: 'jessie'
-        }, {
-            id: 2,
-            name: 'tina'
-        }]
-    });
-});*/
 
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function(compilation) {
@@ -68,6 +61,18 @@ Object.keys(proxyTable).forEach(function(context) {
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+app.post('/api/menus', function(req, res) {
+
+  console.log(res.json(menus));
+  res.json(menus);
+});
+
+app.post('/api/users', function(req, res) {
+    console.log( res.json(users));
+  res.json(users);
+});
+
 
 module.exports = app.listen(port, function(err) {
     if (err) {

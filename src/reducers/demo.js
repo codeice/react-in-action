@@ -10,19 +10,19 @@ const initialState = {
 export default function demo(state = initialState, action) {
 
     switch (action.type) {
-        //redux 
-        case types.GET_USER:
-            return [
-                ...state,
-                action.user
-            ]
-        //reducer
+        //redux-promise
         case types.ADD_USER:
             if(action.payload.ok==true){
             return [...state, JSON.parse(action.payload.data.data)];
             }else{
                 return state;
             }
+        case types.RECEIVE_USERS:
+        debugger;
+             return [
+                ...state,
+                action.user
+            ]
         default:
             return state;
     }

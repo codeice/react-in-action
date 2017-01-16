@@ -1,6 +1,3 @@
-export const GET_USER='GET_USER'
-export const ADD_USER='ADD_USER'
-
-export const REQUEST_USER='REQUEST_USERS'
-export const  RECEIVE_USER='RECEIVE_USERS'
-export const  FAILURE_USER='FAILURE_USERS'
+export const REQUEST_USERS='REQUEST_USER'
+export const  RECEIVE_USERS='RECEIVE_USER'
+export const  FAILURE_USERS='FAILURE_USER'

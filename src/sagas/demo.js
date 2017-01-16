@@ -5,15 +5,11 @@ import  api from '../api'
 import * as actions from '../actions/demo'
 import * as ActionTypes from '../constants/demoTypes'
 
-
 //----获取用户
 export function* fetchUsers(params){
 	try{
 		debugger;
-/*		const response=yield call(api.get('users'));*/
-		setTimeout(function(){
-			console.log('');
-		},3000);
+		const response=yield call(api.get(`mockjs/9768/Users/id${id}`),params.id);
 		yield put(actions.receiveUsers);
 	}catch(error){
 		yield put(actions.failureUsers);

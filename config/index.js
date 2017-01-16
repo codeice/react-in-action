@@ -27,7 +27,7 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             '/api': {
-                target: 'http://rap.taobao.org/',
+                target: '/mocks',
                 changeOrigin: true
             }
         },

@@ -15,7 +15,7 @@ class Demo extends Component {
         const { users,userId,user,dispatch } = this.props
         return (
             <div className = "page-container" >
-                <input type ='button' value='redux-thunk async'  onClick={()=>{dispatch(demoAction.getUserAsync(userId))}} />
+                <input type ='button' value='redux-thunk async'  onClick={()=>{dispatch(demoAction.getUserAsync())}} />
                 <input type ='button' value='redux-promise async'  onClick={()=>{dispatch(demoAction.addUserAsync(user))}} />
                 <input type ='button' value='redux-saga async'  onClick={()=>{dispatch(demoAction.requestUsers())}} />
             </div>
