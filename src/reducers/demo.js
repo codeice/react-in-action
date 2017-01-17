@@ -12,17 +12,19 @@ export default function demo(state = initialState, action) {
     switch (action.type) {
         //redux-promise
         case types.ADD_USER:
-            if(action.payload.ok==true){
-            return [...state, JSON.parse(action.payload.data.data)];
-            }else{
+            if (action.payload.ok == true) {
+                return [...state, action.payload.data.user];
+            } else {
                 return state;
             }
         case types.RECEIVE_USERS:
         debugger;
-             return [
+            return [
                 ...state,
-                action.user
+                action.users
             ]
+        case types.FAILURE_USERS:
+            return state
         default:
             return state;
     }

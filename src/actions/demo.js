@@ -8,36 +8,35 @@ import api from '../api'
     }
 }
 */
-export const requestUser = (id) => ({
-    type: types.REQUEST_USER,
-    id
+export const requestUsers = () => ({
+    type: types.REQUEST_USERS
 });
 
-export const receivedUser=(user) => ({
-    type: types.RECEIVE_USER,
-    user
+export const receivedUsers=(users) => ({
+    type: types.RECEIVE_USERS,
+    users
 });
 
 
-export const failureUser= (error, errorType) => ({
-    type: types.FAILURE_USER,
+export const failureUsers= (error, errorType) => ({
+    type: types.FAILURE_USERS,
     error,
     errorType
 });
 
-
-/*//redux-thunk
-export function getUserAsync(id) {
+//redux-thunk
+export function getUserAsync() {
     return dispatch => {
-        api.get('mockjs/9768/Users', { id: id }).then(function(response) {
-            console.log('user info=', response.data);
-            var user = response.data;
+        api.get('users').then(function(response) {
+            debugger;
+            console.log('user info=', response.data.users);
+            var users = response.data.users;
             dispatch({
-                type: types.GET_USER,
-                user
+                type: types.RECEIVE_USERS,
+                users
             });
         }, function(response) {
-            console.log('get user info error=', response.data);
+            console.log('get user info error=', response);
         });
     }
 }
@@ -47,35 +46,6 @@ export function getUserAsync(id) {
 export function addUserAsync(user) {
     return {
         type: types.ADD_USER,
-        payload: api.post('mockjs/9768/Users', user)
+        payload: api.post('users/add')
     }
 }
-*/
-
-
-//redux-thunk
-export function getUserAsync() {
-    return dispatch => {
-        api.post('users').then(function(response) {
-            debugger;
-            console.log('user info=', response.users);
-            var users = response.users;
-            dispatch({
-                type: types.RECEIVE_USERS,
-                users
-            });
-        }, function(response) {
-            debugger;
-            console.log('get user info error=', response);
-        });
-    }
-}
-
-
-//redux-promise
-/*export function addUserAsync(user) {
-    return {
-        type: types.ADD_USER,
-        payload: api.post('mockjs/9768/Users', user)
-    }
-}*/

@@ -1,18 +1,28 @@
-import {takeEvery} from 'redux-saga'
+import { takeEvery } from 'redux-saga'
 import {put,call} from 'redux-saga/effects'
 import  api from '../api'
 
 import * as actions from '../actions/demo'
 import * as ActionTypes from '../constants/demoTypes'
 
+function getUsers(){
+	return api.get('users');
+}
+
 //----获取用户
 export function* fetchUsers(params){
 	try{
+		const response=yield call(getUsers);
 		debugger;
-		const response=yield call(api.get(`mockjs/9768/Users/id${id}`),params.id);
-		yield put(actions.receiveUsers);
+		if(response.data.code==200)
+		{
+			yield put(actions.receivedUsers(response.data.users));
+		}else{
+			console.log('error');
+		}
 	}catch(error){
-		yield put(actions.failureUsers);
+		debugger;
+		yield put(actions.failureUsers(error));
 	}
 }
 

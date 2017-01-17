@@ -5,12 +5,12 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.config.js');
 var config = require('../config')
 
-const menus = require('../fake/menus.js')
-const users = require('../fake/users.js')
+const menus=require('../fake/menus.js')
+const users=require('../fake/users.js')
 
 
-console.log('menus=', menus);
-console.log('users=', users);
+console.log('menus=',menus);
+console.log('users=',users);
 
 var proxyTable = config.dev.proxyTable
     // default port where dev server listens for incoming traffic
@@ -41,7 +41,7 @@ compiler.plugin('compilation', function(compilation) {
 });
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function(context) {
+/*Object.keys(proxyTable).forEach(function(context) {
     var options = proxyTable[context]
     if (typeof options === 'string') {
         options = { target: options }
@@ -55,20 +55,22 @@ Object.keys(proxyTable).forEach(function(context) {
     }
     console.log('context=', context, 'options=', options);
     app.use(proxyMiddleware(context, options))
-})
-
+})*/
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-app.post('/api/menus', function(req, res) {
-    res.json({ "code": 200, "msg": "成功", "menus": [{ "id": 1, "name": "Dashboard", "url": "/Dashboard" }, { "id": 2, "name": "Demo", "url": "/Demo", "submenus": [{ "id": 1, "name": "二级菜单1", "url": "/test" }, { "id": 2, "name": "二级菜单2", "url": "/test" }] }] });
+app.get('/api/menus', function(req, res) {
+  res.json(menus);
 });
 
-app.post('/api/users', function(req, res) {
-    console.log(res.json(users));
-    res.json({ "code": 200, "msg": "成功", "users": [{ "id": 1, "name": "jessie", "age": 26 }, { "id": 2, "name": "tina", "age": 22 }] });
+app.get('/api/users', function(req, res) {
+  res.json(users);
+});
+
+app.post('/api/users/add',function(req,res){
+    res.json({user:{id:4,name:'new user'}});
 });
 
 

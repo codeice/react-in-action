@@ -1,8 +1,13 @@
 var express = require('express');
 var app = express();
+var menus=require('./fake/menus');
 
-app.get('/test', function(req, res) {
+app.get('/api/api/test', function(req, res) {
   res.json({hello: 'world'});
+});
+
+app.get('/api/menus', function(req, res) {
+  res.json(menus);
 });
 
 app.listen(8888, function(err) {
