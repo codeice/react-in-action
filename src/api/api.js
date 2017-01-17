@@ -29,6 +29,7 @@ var fetchProxy = function(method, api, params) {
         fetchPromise = fetch(api, { method, mode: 'cors', headers: headers });
     } else {
         let body = JSON.stringify(params)
+        debugger;
         fetchPromise = fetch(api, { method, mode: 'cors', body, headers: headers });
     }
     return fetchPromise;

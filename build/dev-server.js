@@ -5,12 +5,12 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.config.js');
 var config = require('../config')
 
-const menus=require('../fake/menus.js')
-const users=require('../fake/users.js')
+const menus = require('../fake/menus.js')
+const users = require('../fake/users.js')
 
 
-console.log('menus=',menus);
-console.log('users=',users);
+console.log('menus=', menus);
+console.log('users=', users);
 
 var proxyTable = config.dev.proxyTable
     // default port where dev server listens for incoming traffic
@@ -63,14 +63,12 @@ var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsS
 app.use(staticPath, express.static('./static'))
 
 app.post('/api/menus', function(req, res) {
-
-  console.log(res.json(menus));
-  res.json(menus);
+    res.json({ "code": 200, "msg": "成功", "menus": [{ "id": 1, "name": "Dashboard", "url": "/Dashboard" }, { "id": 2, "name": "Demo", "url": "/Demo", "submenus": [{ "id": 1, "name": "二级菜单1", "url": "/test" }, { "id": 2, "name": "二级菜单2", "url": "/test" }] }] });
 });
 
 app.post('/api/users', function(req, res) {
-    console.log( res.json(users));
-  res.json(users);
+    console.log(res.json(users));
+    res.json({ "code": 200, "msg": "成功", "users": [{ "id": 1, "name": "jessie", "age": 26 }, { "id": 2, "name": "tina", "age": 22 }] });
 });
 
 

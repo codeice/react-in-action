@@ -18,6 +18,5 @@ export function* fetchUsers(params){
 
 //----每次request_user action被启动时，启动fetchUser任务
 export function* watchFetchUsers(){
-	debugger;
 	yield * takeEvery(ActionTypes.REQUEST_USERS, fetchUsers)
 }
