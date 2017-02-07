@@ -9,7 +9,7 @@ function getUsers(){
 	return api.get('users');
 }
 
-//----获取用户
+//----async action task
 export function* fetchUsers(params){
 	try{
 		const response=yield call(getUsers);
